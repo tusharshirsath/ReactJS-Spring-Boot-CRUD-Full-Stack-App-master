@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tushar Shirsath | DevOps Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+header{
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#111827;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.hero{
+padding:120px 8%;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero span{
+color:#38bdf8;
+}
+
+.button{
+display:inline-block;
+margin-top:20px;
+padding:12px 30px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+section{
+padding:70px 8%;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:#111827;
+margin-top:60px;
+}
+
+#clock{
+font-size:18px;
+color:#38bdf8;
+margin-top:20px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<h2>DevOps Portfolio</h2>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#github">GitHub</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Hello I'm <span>Tushar Shirsath</span></h1>
+
+<h2>CKA Certified DevOps Engineer</h2>
+
+<p>
+AWS • Kubernetes • Terraform • Docker • GitHub Actions
+</p>
+
+<a class="button" href="#">Download Resume</a>
+
+<div id="clock"></div>
+
+</section>
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<p>
+
+DevOps Engineer with experience in Kubernetes, Amazon EKS,
+Terraform, GitHub Actions, Docker and CI/CD automation.
+Currently working at VOIS supporting cloud-native applications.
+
+</p>
+
+</section>
+
+<section id="skills">
+
+<h2>Skills</h2>
+
+<div class="cards">
+
+<div class="card">AWS</div>
+
+<div class="card">Docker</div>
+
+<div class="card">Kubernetes</div>
+
+<div class="card">Terraform</div>
+
+<div class="card">GitHub Actions</div>
+
+<div class="card">Jenkins</div>
+
+<div class="card">Linux</div>
+
+<div class="card">Python</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>DevOps Portfolio</h3>
+
+<p>Responsive portfolio deployed using GitHub Pages.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Kubernetes Monitoring</h3>
+
+<p>Prometheus + Grafana Monitoring Stack.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Terraform AWS</h3>
+
+<p>Provisioned AWS infrastructure using Terraform.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="github">
+
+<h2>Latest GitHub Repositories</h2>
+
+<div id="repos" class="cards"></div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email : your@email.com</p>
+
+<p>LinkedIn : linkedin.com/in/yourprofile</p>
+
+<p>GitHub : github.com/yourusername</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Tushar Shirsath</p>
+
+</footer>
+
+<script>
+
+function updateClock(){
+
+const now=new Date();
+
+document.getElementById("clock").innerHTML=
+
+now.toLocaleString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+
+fetch("https://api.github.com/users/octocat/repos")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+let html="";
+
+data.slice(0,6).forEach(repo=>{
+
+html+=`
+
+<div class="card">
+
+<h3>${repo.name}</h3>
+
+<p>${repo.description || "No description"}</p>
+
+<a href="${repo.html_url}" target="_blank" style="color:#38bdf8;">View Repository</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("repos").innerHTML=html;
+
+});
+
+</script>
+
+</body>
+</html>
