@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Search</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    text-align:center;
+    width:90%;
+    max-width:700px;
+}
+
+.logo{
+    font-size:70px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.logo span:nth-child(1){color:#4285F4;}
+.logo span:nth-child(2){color:#EA4335;}
+.logo span:nth-child(3){color:#FBBC05;}
+.logo span:nth-child(4){color:#4285F4;}
+.logo span:nth-child(5){color:#34A853;}
+.logo span:nth-child(6){color:#EA4335;}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#202124;
+    border:1px solid #5f6368;
+    border-radius:40px;
+    padding:10px 20px;
+    transition:.3s;
+}
+
+.search-box:hover{
+    box-shadow:0 0 15px rgba(255,255,255,.15);
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:white;
+    font-size:18px;
+    padding:10px;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+button{
+    background:#303134;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    margin:10px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#3c4043;
+}
+
+.links{
+    margin-top:40px;
+}
+
+.links a{
+    color:#8ab4f8;
+    text-decoration:none;
+    margin:15px;
+    font-size:18px;
+}
+
+.links a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+<span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+</div>
+
+<div class="search-box">
+<input
+id="search"
+type="text"
+placeholder="Search Google..."
+onkeypress="if(event.key==='Enter') searchGoogle()">
+</div>
+
+<div class="buttons">
+<button onclick="searchGoogle()">Google Search</button>
+<button onclick="openGmail()">Gmail</button>
+</div>
+
+<div class="links">
+<a href="https://www.google.com" target="_blank">Google</a>
+<a href="https://mail.google.com" target="_blank">Gmail</a>
+<a href="https://maps.google.com" target="_blank">Maps</a>
+<a href="https://drive.google.com" target="_blank">Drive</a>
+</div>
+
+</div>
+
+<script>
+function searchGoogle(){
+    let query=document.getElementById("search").value.trim();
+
+    if(query===""){
+        alert("Please enter something to search.");
+        return;
+    }
+
+    window.open(
+        "https://www.google.com/search?q="+encodeURIComponent(query),
+        "_blank"
+    );
+}
+
+function openGmail(){
+    window.open("https://mail.google.com","_blank");
+}
+</script>
+
+</body>
+</html>
