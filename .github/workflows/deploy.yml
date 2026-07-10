@@ -1,10 +1,9 @@
-name: 🚀 Deploy DevOps Portfolio to GitHub Pages
+name: 🚀 Deploy Multi-Page Website to GitHub Pages
 
 on:
   push:
     branches:
       - master
-
   workflow_dispatch:
 
 permissions:
@@ -18,7 +17,6 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy Website
     runs-on: ubuntu-latest
 
     environment:
@@ -29,13 +27,13 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: ⚡ Setup GitHub Pages
+      - name: ⚙️ Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: 🔍 Validate HTML
+      - name: 📂 Verify Website Files
         run: |
-          echo "Checking HTML files..."
-          find . -name "*.html"
+          echo "Website files:"
+          find . -type f
 
       - name: 📦 Upload Website
         uses: actions/upload-pages-artifact@v3
